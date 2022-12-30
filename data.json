@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "name": "Ardoise",
+        "size": {
+            "length": 250,
+            "width": 190,
+            "height": 75
+        }
+    },
+    {
+        "id": 2,
+        "name": "Danger Dan",
+        "size": {
+            "length": 190,
+            "width": 120,
+            "height": 75
+        }
+    },
+    {
+        "id": 3,
+        "name": "Pho",
+        "size": {
+            "length": 250,
+            "width": 190,
+            "height": 75
+        }
+    },
+    {
+        "id": 4,
+        "name": "Mortimer",
+        "size": {
+            "length": 250,
+            "width": 190,
+            "height": 75
+        }
+    }
+]
