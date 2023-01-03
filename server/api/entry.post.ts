@@ -3,11 +3,11 @@ const config = useRuntimeConfig();
 
 export default defineEventHandler(async (event) => {
   const { email, waitinglist } = await readBody(event);
-  const pb = new PocketBase(config.POCKETBASE_HOST);
+  const pb = new PocketBase(config.pocketbaseHost);
 
   const authData = await pb.admins.authWithPassword(
-    config.POCKETBASE_EMAIL,
-    config.POCKETBASE_PASSWORD
+    config.pocketbaseEmail,
+    config.pocketbasePassword
   );
 
   const entry = await pb.collection('entries').create({

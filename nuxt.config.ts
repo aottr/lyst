@@ -2,10 +2,10 @@
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss'],
   runtimeConfig: {
-    POCKETBASE_HOST: process.env.POCKETBASE_HOST,
-    POCKETBASE_EMAIL: process.env.POCKETBASE_EMAIL,
-    POCKETBASE_PASSWORD: process.env.POCKETBASE_PASSWORD,
-    POCKETBASE_PREFIX: process.env.POCKETBASE_PREFIX,
+    pocketbaseHost: process.env.NUXT_POCKETBASE_HOST || '',
+    pocketbaseEmail: process.env.NUXT_POCKETBASE_EMAIL || '',
+    pocketbasePassword: process.env.NUXT_POCKETBASE_PASSWORD || '',
+    pocketbasePrefix: process.env.NUXT_POCKETBASE_PREFIX || '',
     public: {},
   },
 });
