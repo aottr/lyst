@@ -1,4 +1,4 @@
-FROM node:18-alpine3.16
+FROM node:19-alpine3.16
 
 RUN mkdir -p /opt/whishlist
 WORKDIR /opt/whishlist
@@ -14,5 +14,3 @@ EXPOSE 3000
 
 ENV NUXT_HOST=0.0.0.0
 ENV NUXT_PORT=3000
-
-CMD [ "npm", "start" ]

@@ -1,10 +1,8 @@
 import PocketBase from 'pocketbase';
+const config = useRuntimeConfig();
+
 export default defineEventHandler(async (event) => {
   try {
-    const config = useRuntimeConfig();
-    console.log(config);
-    console.log(process.env);
-    console.log('Host', config.pocketbaseHost, 'host-end');
     const pb = new PocketBase(config.pocketbaseHost);
 
     const authData = await pb.admins.authWithPassword(
