@@ -2,7 +2,7 @@ import PocketBase from 'pocketbase';
 const config = useRuntimeConfig();
 
 export default defineEventHandler(async (event) => {
-  const { email, waitinglist } = await readBody(event);
+  const { email, waitinglist, region } = await readBody(event);
   const pb = new PocketBase(config.pocketbaseHost);
 
   const authData = await pb.admins.authWithPassword(
@@ -13,6 +13,7 @@ export default defineEventHandler(async (event) => {
   const entry = await pb.collection('entries').create({
     email: email,
     waitinglist: waitinglist,
+    region: region,
   });
   pb.authStore.clear();
   return {

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+interface OptionsState {
+  region: 'USA' | 'Europe';
+}
+
 const route = useRoute();
 const slug = route.params.slug;
 
@@ -7,6 +11,9 @@ const list = lists.find((list) => list.slug == slug);
 if (!list) clearError({ redirect: '/' });
 const email = ref('');
 const success = ref(false);
+const options = reactive<OptionsState>({
+  region: 'USA',
+});
 
 const handleSubmit = async () => {
   const formatedEmail = email.value.trim();
@@ -18,6 +25,7 @@ const handleSubmit = async () => {
     body: JSON.stringify({
       email: formatedEmail,
       waitinglist: list?.id,
+      region: options.region,
     }),
   });
   success.value = true;
@@ -50,13 +58,37 @@ const handleSubmit = async () => {
 
     <div class="form-control max-w-md mx-auto">
       <h1 class="text-3xl my-4">{{ list.name }}</h1>
-      <input
-        v-model="email"
-        type="email"
-        placeholder="awesome@aottr.dev"
-        class="input input-bordered my-2"
-        minlength="6"
-        required />
+      <div class="form-control my-2">
+        <label class="label">
+          <span class="label-text">Your email address</span>
+        </label>
+        <input
+          v-model="email"
+          type="email"
+          placeholder="awesome@aottr.dev"
+          class="input input-bordered"
+          minlength="6"
+          required />
+      </div>
+      <div class="form-control my-2">
+        <label class="label">
+          <span class="label-text">Your preferred warehouse region</span>
+        </label>
+        <div class="btn-group btn-group-vertical">
+          <button
+            class="btn"
+            :class="options.region === 'USA' && 'btn-active'"
+            @click="options.region = 'USA'">
+            Utah (USA)
+          </button>
+          <button
+            class="btn"
+            :class="options.region === 'Europe' && 'btn-active'"
+            @click="options.region = 'Europe'">
+            France
+          </button>
+        </div>
+      </div>
       <button v-on:click="handleSubmit" class="btn btn-success my-2">
         Put me on the list !
       </button>
