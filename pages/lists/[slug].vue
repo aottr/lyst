@@ -2,7 +2,7 @@
 const route = useRoute();
 const slug = route.params.slug;
 
-const lists = (await $fetch('/api/wishlists')).data;
+const lists = (await $fetch('/api/waitinglists')).data;
 const list = lists.find((list) => list.slug == slug);
 if (!list) clearError({ redirect: '/' });
 const email = ref('');
@@ -30,7 +30,7 @@ const handleSubmit = async () => {
       <Title v-if="list">{{ list.name }}</Title>
     </Head>
   </Html>
-  <div v-if="list" class="container mx-auto">
+  <div v-if="list">
     <div v-if="success" class="alert alert-success shadow-lg my-3">
       <div>
         <svg

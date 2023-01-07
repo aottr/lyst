@@ -6,6 +6,8 @@ export default defineNuxtConfig({
     pocketbaseEmail: process.env.NUXT_POCKETBASE_EMAIL || '',
     pocketbasePassword: process.env.NUXT_POCKETBASE_PASSWORD || '',
     pocketbasePrefix: process.env.NUXT_POCKETBASE_PREFIX || '',
-    public: {},
+    public: {
+      version: '1.0.2',
+    },
   },
 });

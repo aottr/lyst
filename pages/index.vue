@@ -1,14 +1,14 @@
 <script setup lang="ts">
-const lists = await $fetch('/api/wishlists');
+const lists = await $fetch('/api/waitinglists');
 </script>
 <template>
   <Html>
     <Head>
-      <Title>Wishlist</Title>
-      <Meta name="description" content="Wishlist system" />
+      <Title>Waitinglist</Title>
+      <Meta name="description" content="Waitinglist by AlexOttr" />
     </Head>
   </Html>
-  <div class="container mx-auto p-4">
+  <div>
     <ListItem
       v-for="item in lists.data"
       :key="item.id"
