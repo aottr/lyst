@@ -25,7 +25,7 @@ const handleSubmit = async () => {
     body: JSON.stringify({
       email: formatedEmail,
       waitinglist: list?.id,
-      region: options.region,
+      region: list?.regions.length ? options.region : null,
     }),
   });
   success.value = true;
@@ -70,7 +70,7 @@ const handleSubmit = async () => {
           minlength="6"
           required />
       </div>
-      <div class="form-control my-2">
+      <div class="form-control my-2" v-if="list.regions.length">
         <label class="label">
           <span class="label-text">Your preferred warehouse region</span>
         </label>
