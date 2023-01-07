@@ -2,9 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches: [feature/region]
 
 jobs:
   build-package:
@@ -14,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag ghcr.io/aottr/waitinglist:latest
+        run: docker build . --file Dockerfile --tag ghcr.io/aottr/waitinglist:region
 
       - name: Publish Docker image to Github Packages
         shell: bash
@@ -22,5 +20,5 @@ jobs:
           PAT: ${{ secrets.PAT }}
         run: |
           echo $PAT | docker login ghcr.io --username alexottr --password-stdin
-          docker push ghcr.io/aottr/waitinglist:latest
+          docker push ghcr.io/aottr/waitinglist:region
           docker logout
