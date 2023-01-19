@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
   const entry = await pb.collection('entries').create({
     email: email,
     waitinglist: waitinglist,
-    region2: region,
+    region: region,
   });
   pb.authStore.clear();
   return {

@@ -8,7 +8,6 @@ const slug = route.params.slug;
 
 const lists = (await $fetch('/api/waitinglists')).data;
 const regions = (await $fetch('/api/regions')).data;
-console.log(regions);
 const list = lists.find((list) => list.slug == slug);
 if (!list) clearError({ redirect: '/' });
 const email = ref('');
@@ -27,7 +26,7 @@ const handleSubmit = async () => {
     body: JSON.stringify({
       email: formatedEmail,
       waitinglist: list?.id,
-      region: list?.regions2.length ? options.region : null,
+      region: list?.regions.length ? options.region : null,
     }),
   });
   success.value = true;
