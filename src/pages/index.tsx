@@ -1,4 +1,3 @@
-import {Inter} from 'next/font/google'
 import Head from 'next/head';
 import type {ReactElement} from "react";
 import initPocketBase from "@/helpers/initPocketbase";
