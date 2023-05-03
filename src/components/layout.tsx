@@ -7,7 +7,7 @@ function Layout({
     return (
         <div className="container mx-auto flex flex-col h-screen justify-between">
             <Header/>
-            <main>{children}</main>
+            <main className="p-4">{children}</main>
             <Footer />
         </div>
     );
